@@ -1,0 +1,103 @@
+backend:
+  name: github
+  repo: odyssoulis/gatsby-netlify
+  branch: master
+  commit_messages:
+    create: 'Create {{collection}} “{{slug}}”'
+    update: 'Update {{collection}} “{{slug}}”'
+    delete: 'Delete {{collection}} “{{slug}}”'
+    uploadMedia: '[skip ci] Upload “{{path}}”'
+    deleteMedia: '[skip ci] Delete “{{path}}”'
+
+media_folder: static/img
+public_folder: /img
+
+collections:
+  - name: "blog"
+    label: "Blog"
+    folder: "src/components/cms/blog"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - {label: "Template Key", name: "templateKey", widget: "hidden", default: "blog-post"}
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Publish Date", name: "date", widget: "datetime"}
+      - {label: "Description", name: "description", widget: "text"}
+      - {label: "Featured Post", name: "featuredpost", widget: "boolean"}
+      - {label: "Featured Image", name: "featuredimage", widget: image}
+      - {label: "Body", name: "body", widget: "markdown"}
+      - {label: "Tags", name: "tags", widget: "list"}
+
+  - name: "CTA"
+    label: "cta"
+    folder: "src/components/cms/cta"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Template Key", name: "templateKey", widget: "hidden", default: "cta"}
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Description", name: "description", widget: "text"}
+      - {label: "ActionTitle", name: "actionTitle", widget: "string"}
+
+  - name: "page"
+    label: "Page"
+    folder: 'src/pages'
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Template Key", name: "templateKey", widget: "hidden", default: "page"}
+      - label: "Sections"
+        name: "sections"
+        widget: "list"
+        types:
+          - label: 'cta'
+            name: 'CTA'
+            fields:
+              - {label: "Template Key", name: "templateKey", widget: "hidden", default: "cta"}
+              - {label: "Title", name: "title", widget: "string"}
+              - {label: "Description", name: "description", widget: "text"}
+              - {label: "ActionTitle", name: "actionTitle", widget: "string"}
+              - {label: "Link", name: link, widget: "string"}
+          - label: 'carousel'
+            name: 'Carousel'
+            fields:
+              - {label: "Template Key", name: "templateKey", widget: "hidden", default: "carousel"}
+              - {label: "Title", name: "title", widget: "string"}
+              - label: Images
+                name: images
+                widget: list
+                field: {label: Image, name: image, widget: image}
+          - label: 'video'
+            name: 'Video'
+            fields:
+              - {label: "Template Key", name: "templateKey", widget: "hidden", default: "video"}
+              - {label: "Title", name: "title", widget: "string"}
+              - label: File
+                name: file
+                widget: file
+
+
+
+  #       - label: 'Home Section'
+  # name: 'sections'
+  # widget: 'list'
+  # types:
+  #   - label: 'Carousel'
+  #     name: 'carousel'
+  #     widget: object
+  #     summary: '{{fields.header}}'
+  #     fields:
+  #       - { label: Header, name: header, widget: string, default: 'Image Gallery' }
+  #       - { label: Template, name: template, widget: string, default: 'carousel.html' }
+  #       - label: Images
+  #         name: images
+  #         widget: list
+  #         field: { label: Image, name: image, widget: image }
+  #   - label: 'Spotlight'
+  #     name: 'spotlight'
+  #     widget: object
+  #     fields:
+  #       - { label: Header, name: header, widget: string, default: 'Spotlight' }
+  #       - { label: Template, name: template, widget: string, default: 'spotlight.html' }
+  #       - { label: Text, name: text, widget: text, default: 'Hel
