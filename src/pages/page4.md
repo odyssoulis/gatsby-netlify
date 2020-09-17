@@ -15,4 +15,14 @@ sections:
     images:
       - /img/blog-index.jpg
       - /img/home-jumbotron.jpg
+  - type: CTA
+    templateKey: cta
+    title: kmk
+    description: kmkmkm
+    actionTitle: kmkmkmkm
+    link: /ko
+  - type: Video
+    templateKey: video
+    title: videoooo
+    file: /img/chukuchukuchat.mov
 ---
