@@ -1,6 +1,6 @@
 backend:
-  name: git-gateway
-  # repo: odyssoulis/gatsby-netlify
+  name: github
+  repo: odyssoulis/gatsby-netlify
   branch: master
   commit_messages:
     create: 'Create {{collection}} “{{slug}}”'
